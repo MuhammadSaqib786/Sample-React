@@ -3,7 +3,7 @@ import './App.css';
 import './index.css'
 
 function App() {
- function prepareFood(callback) {
+ /*function prepareFood(callback) {
     setTimeout(()=>
     {
       console.log("prepare paratha");
@@ -19,17 +19,33 @@ function App() {
 
     },20);
   }
-return <div >
- <h1>Asynchronous function example</h1>
- {prepareFood(function (value)
- {
-   console.log(value);
-   prepareEgg(function (value)
+  */
+ function prepareFood(data) {
+   let promise = new Promise(function(resolve,reject)
    {
-     console.log(value);
-   }
-   );
- })}
+     console.log("prepare food");
+     resolve("food is ready")
+   })
+ return promise;
+}
+
+function prepareMilkShake(data) {
+  let promise = new Promise(function(resolve,reject)
+  {
+    console.log("prepare MilkShake");
+    resolve("Milkshake is ready")
+  })
+  return promise;
+}
+async function startProcess() {
+  let foodValue = await prepareFood();
+  console.log(foodValue);
+  let milshakeValue= await prepareMilkShake();
+  console.log(milshakeValue);
+}
+startProcess();
+return <div >
+ <h1>Asynchronous function example</h1> <h3>Check console</h3> 
  </div>
 }
 
