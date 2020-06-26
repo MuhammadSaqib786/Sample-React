@@ -27,7 +27,7 @@ if(isFetching){
 }
 
 return <div >
-  <h1>This is about fetch data</h1>
+  <h1>This is about fetching data</h1>
 <span>Title = {todo.title}</span>
  </div>
 }
