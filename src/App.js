@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import './App.css';
-import Hello from './hello';
 import './index.css'
 
-function App({name,age}) {
-const [isLit, setLit] = React.useState(true);
-return <div className={`room ${isLit ? "lit" : "dark"}`}> Hello  <strong>{name} </strong> 
-<br/>
-<ul>
-<li>Your Name is : {name}</li>
-<li>Your age is : {age}</li>
-<li>You are computer scientist</li>
-</ul>
- <Hello firstName={name}/>
- <button onClick={() => setLit(!isLit)}>
-    flip
-  </button> <br/>
- 
+function App() {
+
+  let data ={title : "waiting for data"}
+  const [todo,setTodo]= useState(data);
+  const [isData, setData] = useState(false);
+  const [isFetching, setFetching] = useState(false);
+
+  useEffect(()=> {
+    async function fetchData(){
+      setFetching(true);
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+      console.log("response = ",response);
+      let data2 = await response.json()
+      setTodo(data2); 
+      setFetching(false); 
+      console.log("Data = ",todo);
+    }
+    fetchData();
+  },[isData]);
+
+if(isFetching){
+  return <div>Data Loading.....</div>
+}
+
+return <div >
+  <h1>This is about fetch data</h1>
+<span>Title = {todo.title}</span>
  </div>
 }
 
