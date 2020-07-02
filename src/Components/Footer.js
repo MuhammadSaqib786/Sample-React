@@ -12,7 +12,7 @@ import image6 from "./ahsan.jpg";
 import image7 from "./sohail.jpg";
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
+    flexGrow: 2,
   },
   images: {
     textAlign: "center",
@@ -58,8 +58,8 @@ export default function Footer() {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
+          indicatorColor=""
+          textColor=""
           centered
         >
           <Tab
@@ -80,6 +80,14 @@ export default function Footer() {
               setImageName(3);
             }}
           />
+        </Tabs>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor=""
+          textColor=""
+          centered
+        >
           <Tab
             label="Azhar Ali"
             onClick={() => {
@@ -98,6 +106,14 @@ export default function Footer() {
               setImageName(6);
             }}
           />
+        </Tabs>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor=""
+          textColor=""
+          centered
+        >
           <Tab
             label="Sohail Sheeda"
             onClick={() => {
